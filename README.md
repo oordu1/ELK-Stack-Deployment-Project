@@ -11,7 +11,7 @@ The files in this repository were used to configure the network depicted below.
 These files have been tested and used to generate a live ELK deployment on Azure. They can be used to either recreate the entire deployment pictured above. Alternatively, select portions of the __Project 1 - Elk Stack Diagram__ file may be used to install only certain pieces of it, such as Filebeat.
 
   - filebeat-playbook.yml 
-  - filebeat-configuration.yml
+  - filebeat-configuration(2).yml
 
 This document contains the following details:
 - Description of the Topologu
@@ -94,10 +94,13 @@ This ELK server is configured to monitor the following machines:
 
 
 We have installed the following Beats on these machines:
-- Filebeat 
+- Filebeat (Linux/filebeat-configuration(2).yml, Ansible/filebeat-playbook.yml)
+- Metricbeat(Linux/metricbeat-configuration.yml, Ansible/metricbeat-playbook.yml)
 
 These Beats allow us to collect the following information from each machine:
 - Filebeat collects data about the file system. Filebeat is generally used when collecting log files that are generated from Apache, Azure, Nginx web server, and MySQI databases.
+
+Metricbeat collects the metrics of a machine such as CPU usage and and uptime.
 
 ### Using the Playbook
 In order to use the playbook, you will need to have an Ansible control node already configured. Assuming you have such a control node provisioned: 
@@ -105,9 +108,15 @@ In order to use the playbook, you will need to have an Ansible control node alre
 SSH into the control node and follow the steps below:
 
 ---Filebeat---
-- Copy the filebeat-configuration.yml file to /etc/ansible/roles/files
+- Copy the filebeat-configuration(2).yml file to /etc/ansible/roles/files
 - Update the filebeat-configuration.yml file to include ELK Private IP in lines 1106 and 1806.
-- Run the playbook, and navigate to http://20.49.1.209:5601 (Elk VM Public IP) to check that the installation worked as expected.
+- Run the playbook, and navigate to http://20.49.1.209:5601 (ELK VM Public IP) to check that the installation worked as expected.
+
+---Metricbeat---
+
+Copy the metricbeat-configuration.yml file to /etc/ansible/roles/files.
+Update the metricbeat-configuration.yml file to include the ELK Private IP in lines 62 and 96.
+Run the playbook, and navigate to http://20.49.1.56:5601/ (ELK VM Public IP) to check that the installation worked as expected.
 
 _TODO: Answer the following questions to fill in the blanks:_
 - Which file is the playbook? Where do you copy it? 
@@ -124,35 +133,11 @@ http://20.49.1.209:5601
 _As a **Bonus**, provide the specific commands the user will need to run to download the playbook, update the files, etc._
 
       -------Filebeat---------
-
-	- To create the filebeat-configuration.yml file: nano filebeat-configuration.yml. For this, I used the filebeat configuration file template.
-	- To create the playbook: nano filebeat-playbook.yml
-      ---
- 	 - name: installing and launching filebeat
-    	   hosts: webservers
-           become: true
-           tasks:
-
-    	   - name: download filebeat deb
-      	     command: curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-7.7.1-amd64.deb
-
-    	   - name: install filebeat deb
-      	     command: dpkg -i filebeat-7.7.1-amd64.deb
-
-    	   - name: drop in filebeat.yml
-      	     copy:
-       	       src: ./files/filebeat-configuration.yml
-       	       dest: /etc/filebeat/filebeat.yml
-
-    	   - name: enable and configure system module
-      	     command: filebeat modules enable system
-
-    	   - name: setup filebeat
-      	     command: filebeat setup
-
-    	   - name: start filebeat service
-      	    command: service filebeat start
-	---
-
-	-To run the playbook: ansible-playbook filebeat-playbook.yml *
-* In order to run the playbook, you have to be in the directory the playbook is at, or give the path to it (ansible-playbook /etc/ansible/roles/filebeat-playbook.yml.
+      
+      This link will take you to the filebeat-playbook.yml file located in the Ansible folder.
+      https://github.com/oordu1/ELK-Stack-Deployment-Project/blob/master/Ansible/filebeat-playbook.yml
+	
+      -------Metricbeat---------
+      
+      This link will take you to the metricbeat-playbook.yml file located in the Ansible folder.
+      https://github.com/oordu1/ELK-Stack-Deployment-Project/blob/master/Ansible/metricbeat-playbook.yml
