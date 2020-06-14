@@ -1,9 +1,10 @@
-# ELK-Stack-Deployment-Project
-The files in this repository were used to configure the network depicted below
+Okechukwu Ordu
+6/14/2020
 
 ## Automated ELK Stack Deployment
 
 The files in this repository were used to configure the network depicted below.
+
 
 ![Project 1 - Elk Stack Diagram](Images/Project 1 - Elk Stack Diagram.png)
 
@@ -119,6 +120,7 @@ I have to specify two separate groups in the etc/ansible/hosts file. One of the 
 
 - Which URL do you navigate to in order to check that the ELK server is running?
 http://20.49.1.209:5601
+
 _As a **Bonus**, provide the specific commands the user will need to run to download the playbook, update the files, etc._
 
 To create the filebeat-configuration.yml file: nano filebeat-configuration.yml. For this, I used the filebeat configuration file template.
