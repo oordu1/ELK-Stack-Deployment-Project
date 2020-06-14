@@ -34,7 +34,7 @@ Load balancers are an integral part when layered within a security model as it d
 
 A jumpbox is a secure computer that is used to provide an additional layer of security. Admins connect to a jumpbox prior to launching any administrative tasks. A jumpbox are viewed as lockdown secure workstations that can limit attacks from hackers to the network.
 
-Integrating an ELK server allows users to easily monitor the vulnerable VMs for changes to the _network_ and system __logs__.
+Integrating an ELK server allows users to easily monitor the vulnerable VMs for changes to the __network_ and system __logs__.
 
 
 _What does Filebeat watch for?_ 
@@ -60,14 +60,17 @@ The configuration details of each machine may be found below.
 The machines on the internal network are not exposed to the public Internet. 
 
 Only the New-Jump-Box-Provisioner machine can accept connections from the Internet. Access to this machine is only allowed from the following IP addresses:
+
 - 65.50.40.164 (LocalHost IP address)
 
 Machines within the network can only be accessed by New-Jump-Box-Provisioner.
 
 _Which machine did you allow to access your ELK VM?_
+
 -New-Jump-Box-Provisioner
 
 _What was its IP address?_  
+
 -10.0.0.5
 
 A summary of the access policies in place can be found in the table below.
@@ -84,9 +87,11 @@ A summary of the access policies in place can be found in the table below.
 Ansible was used to automate configuration of the ELK machine. No configuration was performed manually, which is advantageous because...
 
 _What is the main advantage of automating configuration with Ansible?_
+
 Ansible provides many advantages such as its simplicity to run complex multi-tier IT application environment. Ansible's playbooks are written in YAML as it is primed for configuration management and automation.
 
 The playbook implements the following tasks:
+
 _In 3-5 bullets, explain the steps of the ELK installation play. E.g., install Docker; download image; etc._
 
 -  First ssh into the New-Jump-Box-Provisioner from the localhost machine
@@ -96,7 +101,7 @@ _In 3-5 bullets, explain the steps of the ELK installation play. E.g., install D
 
 The following screenshot displays the result of running `docker ps` after successfully configuring the ELK instance.
 
-!Docker-ps (Images/Docker-ps.png)
+[!Docker-ps (Images/Docker-ps.png)](https://github.com/oordu1/ELK-Stack-Deployment-Project/blob/master/Images/Docker-ps.png)
 
 ### Target Machines & Beats
 This ELK server is configured to monitor the following machines:
@@ -107,8 +112,8 @@ This ELK server is configured to monitor the following machines:
 
 We have installed the following Beats on these machines:
 
-- Filebeat (Linux/filebeat-configuration(2).yml, Ansible/filebeat-playbook.yml)
-- Metricbeat(Linux/metricbeat-configuration.yml, Ansible/metricbeat-playbook.yml)
+- Filebeat [(Linux/filebeat-configuration(2).yml](https://github.com/oordu1/ELK-Stack-Deployment-Project/blob/master/Linux/filebeat-configuration%20(2).yml), [Ansible/filebeat-playbook.yml)](https://github.com/oordu1/ELK-Stack-Deployment-Project/blob/master/Ansible/filebeat-playbook.yml)
+- Metricbeat[(Linux/metricbeat-configuration.yml](https://github.com/oordu1/ELK-Stack-Deployment-Project/blob/master/Linux/metricbeat.configuration.yml), [Ansible/metricbeat-playbook.yml](https://github.com/oordu1/ELK-Stack-Deployment-Project/blob/master/Ansible/metricbeat-playbook.yml)
 
 These Beats allow us to collect the following information from each machine:
 
