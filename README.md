@@ -123,26 +123,36 @@ http://20.49.1.209:5601
 
 _As a **Bonus**, provide the specific commands the user will need to run to download the playbook, update the files, etc._
 
-To create the filebeat-configuration.yml file: nano filebeat-configuration.yml. For this, I used the filebeat configuration file template.
+      -------Filebeat---------
 
----
-  - name: installing and launching filebeat
-    hosts: webservers
-    become: true
-    tasks:
-    - name: download filebeat deb
-      command: curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-7.7.1-amd64.deb
-    - name: install filebeat deb
-      command: dpkg -i filebeat-7.7.1-amd64.deb
-    - name: drop in filebeat.yml
-      copy:
-       src: ./files/filebeat-configuration.yml
-       dest: /etc/filebeat/filebeat.yml
-    - name: enable and configure system module
-      command: filebeat modules enable system
-    - name: setup filebeat
-      command: filebeat setup
-    - name: start filebeat service
-      command: service filebeat start
+	- To create the filebeat-configuration.yml file: nano filebeat-configuration.yml. For this, I used the filebeat configuration file template.
+	- To create the playbook: nano filebeat-playbook.yml
+      ---
+ 	 - name: installing and launching filebeat
+    	   hosts: webservers
+           become: true
+           tasks:
 
-To run the playbook: ansible-playbook filebeat-playbook.yml 
+    	   - name: download filebeat deb
+      	     command: curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-7.7.1-amd64.deb
+
+    	   - name: install filebeat deb
+      	     command: dpkg -i filebeat-7.7.1-amd64.deb
+
+    	   - name: drop in filebeat.yml
+      	     copy:
+       	       src: ./files/filebeat-configuration.yml
+       	       dest: /etc/filebeat/filebeat.yml
+
+    	   - name: enable and configure system module
+      	     command: filebeat modules enable system
+
+    	   - name: setup filebeat
+      	     command: filebeat setup
+
+    	   - name: start filebeat service
+      	    command: service filebeat start
+	---
+
+	-To run the playbook: ansible-playbook filebeat-playbook.yml *
+* In order to run the playbook, you have to be in the directory the playbook is at, or give the path to it (ansible-playbook /etc/ansible/roles/filebeat-playbook.yml.
