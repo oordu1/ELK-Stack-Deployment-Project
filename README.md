@@ -82,6 +82,7 @@ A summary of the access policies in place can be found in the table below.
 | New-VM1*                 | No                  | 10.0.0.5             |
 | New-VM2*                 | No                  | 10.0.0.5             |
 | ELK-VM*                  | No                  | 10.0.0.5             |
+
 All these VMs can only be accessed from the New-Jump-Box-Provisioner
 
 ### Elk Configuration
