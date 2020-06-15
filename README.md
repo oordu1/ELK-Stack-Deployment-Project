@@ -6,12 +6,12 @@ Okechukwu Ordu
 The files in this repository were used to configure the network depicted below.
 
 
-![Project 1 - Elk Stack Diagram](Images/Project 1 - Elk Stack Diagram.png)
+[Project 1 - Elk Stack Diagram](https://github.com/oordu1/ELK-Stack-Deployment-Project/blob/master/Diagrams/Project%201%20-%20Elk%20Stack%20Diagram.png)
 
 These files have been tested and used to generate a live ELK deployment on Azure. They can be used to either recreate the entire deployment pictured above. Alternatively, select portions of the __Project 1 - Elk Stack Diagram__ file may be used to install only certain pieces of it, such as Filebeat.
 
-  - filebeat-playbook.yml 
-  - filebeat-configuration(2).yml
+  - [Filebeat Playbook](https://github.com/oordu1/ELK-Stack-Deployment-Project/blob/master/Ansible/filebeat-playbook.yml)
+  - [Filebeat Configuration](https://github.com/oordu1/ELK-Stack-Deployment-Project/blob/master/Linux/filebeat-configuration%20(2).yml)
 
 This document contains the following details:
 - Description of the Topologu
@@ -67,11 +67,11 @@ Machines within the network can only be accessed by New-Jump-Box-Provisioner.
 
 _Which machine did you allow to access your ELK VM?_
 
--New-Jump-Box-Provisioner
+- New-Jump-Box-Provisioner
 
 _What was its IP address?_  
 
--10.0.0.5
+- 10.0.0.5
 
 A summary of the access policies in place can be found in the table below.
 
@@ -101,7 +101,7 @@ _In 3-5 bullets, explain the steps of the ELK installation play. E.g., install D
 
 The following screenshot displays the result of running `docker ps` after successfully configuring the ELK instance.
 
-[!Docker-ps (Images/Docker-ps.png)](https://github.com/oordu1/ELK-Stack-Deployment-Project/blob/master/Images/Docker-ps.png)
+[Docker-ps (Images/Docker-ps.png)](https://github.com/oordu1/ELK-Stack-Deployment-Project/blob/master/Images/Docker-ps.png)
 
 ### Target Machines & Beats
 This ELK server is configured to monitor the following machines:
@@ -109,11 +109,10 @@ This ELK server is configured to monitor the following machines:
 - NewVM1 - (10.2.0.10)
 - NewVM2 - (10.2.0.7)
 
-
 We have installed the following Beats on these machines:
 
-- Filebeat [(Linux/filebeat-configuration(2).yml](https://github.com/oordu1/ELK-Stack-Deployment-Project/blob/master/Linux/filebeat-configuration%20(2).yml), [Ansible/filebeat-playbook.yml)](https://github.com/oordu1/ELK-Stack-Deployment-Project/blob/master/Ansible/filebeat-playbook.yml)
-- Metricbeat[(Linux/metricbeat-configuration.yml](https://github.com/oordu1/ELK-Stack-Deployment-Project/blob/master/Linux/metricbeat.configuration.yml), [Ansible/metricbeat-playbook.yml](https://github.com/oordu1/ELK-Stack-Deployment-Project/blob/master/Ansible/metricbeat-playbook.yml)
+- Filebeat [Filebeat Configuration](https://github.com/oordu1/ELK-Stack-Deployment-Project/blob/master/Linux/filebeat-configuration%20(2).yml), [Filebeat Playbook](https://github.com/oordu1/ELK-Stack-Deployment-Project/blob/master/Ansible/filebeat-playbook.yml)
+- Metricbeat[Metricbeat Configuration](https://github.com/oordu1/ELK-Stack-Deployment-Project/blob/master/Linux/metricbeat.configuration.yml), [Metricbeat Playbook](https://github.com/oordu1/ELK-Stack-Deployment-Project/blob/master/Ansible/metricbeat-playbook.yml)
 
 These Beats allow us to collect the following information from each machine:
 
